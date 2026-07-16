@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://gwp502yctqcn"]
+
+[ext_resource type="PackedScene" uid="uid://cxiposspd4aj2" path="res://scenes/player.tscn" id="1_2q6dc"]
+[ext_resource type="PackedScene" uid="uid://c7tsvqs0olqtj" path="res://scenes/bead.tscn" id="2_w7c3h"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w7c3h"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_w8frs"]
+sky_material = SubResource("ProceduralSkyMaterial_w7c3h")
+
+[sub_resource type="Environment" id="Environment_mx8sn"]
+background_mode = 2
+sky = SubResource("Sky_w8frs")
+glow_enabled = true
+
+[sub_resource type="Curve3D" id="Curve3D_w7c3h"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 122.250084, -74.937515, 54.120193, 8.807678, -2.6484375, -3.6330566, -8.807678, 2.6484375, 3.6330566, 73.491394, -5.9283447, 64.54108, 10.957237, -2.1775818, 3.2253723, -10.957237, 2.1775818, -3.2253723, 40.407433, -0.64089966, 65.72511, 11.009125, -6.7252502, 0.9626312, -11.009125, 6.7252502, -0.9626312, 15.792435, 12.358154, 59.73674, 7.144348, 0.94447327, 3.5287476, -7.144348, -0.94447327, -3.5287476, -33.19066, 48.097717, 35.823425, -3.6256256, 2.2890778, 11.768372, 3.6256256, -2.2890778, -11.768372, -56.783203, 43.49138, -23.138779, -4.04665, 5.647827, 11.472885, 4.04665, -5.647827, -11.472885, -28.841614, 25.466644, -67.848434, 9.351135, 2.6824799, 0.24209595, -9.351135, -2.6824799, -0.24209595, -23.398071, -60.392105, -75.06645, 1.2944946, 13.8504715, -19.246552, -1.2944946, -13.8504715, 19.246552, -36.951294, -108.35475, -41.48604, 0, 0, 0, 0, 0, 0, -35.56494, -116.511604, 14.958817, -14.141647, -10.827087, -5.8562317, 14.141647, 10.827087, 5.8562317, -14.4748535, -102.0217, 62.134872, -6.558075, -6.1488724, 3.4237976, 6.558075, 6.1488724, -3.4237976, 9.999268, -59.772827, 50.693344, -14.567047, 2.3330688, 9.666321, 14.567047, -2.3330688, -9.666321, 48.65824, -29.49527, 22.588333, 0, 0, 0, 0, 0, 0, 117.559265, -8.817673, -250.96689),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 14
+
+[node name="Level" type="Node3D" unique_id=1466576287]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=67429660]
+environment = SubResource("Environment_mx8sn")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=273255]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." unique_id=113013378 instance=ExtResource("1_2q6dc")]
+camera_z_offset = 200.0
+
+[node name="Path3D" type="Path3D" parent="." unique_id=1626143005]
+curve = SubResource("Curve3D_w7c3h")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=1064892228]
+transform = Transform3D(-0.16750267, 0.8413961, 0.5138033, 2.9802223e-08, 0.5211666, -0.8534541, -0.9858682, -0.1429563, -0.08729712, 122.250084, -74.937515, 54.120193)
+
+[node name="Bead" parent="Path3D/PathFollow3D" unique_id=1733955880 node_paths=PackedStringArray("path_follow") instance=ExtResource("2_w7c3h")]
+path_follow = NodePath("..")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D" unique_id=833329350]
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c7tsvqs0olqtj"]
+
+[ext_resource type="Texture2D" uid="uid://bl2mor4fcwemo" path="res://icon.svg" id="1_8rpe2"]
+[ext_resource type="Script" uid="uid://dugf5euyfpfi3" path="res://scripts/controllers/bead_controller.gd" id="1_fcylw"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fcylw"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_w7c3h"]
+inner_radius = 0.087
+
+[node name="Bead" type="Node3D" unique_id=1733955880]
+script = ExtResource("1_fcylw")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1890111225]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=901830179]
+shape = SubResource("SphereShape3D_fcylw")
+
+[node name="Sprite3D" type="Sprite3D" parent="Area3D" unique_id=647063596]
+transform = Transform3D(88.745, 0, 0, 0, 88.745, 0, 0, 0, 88.745, 0, 0, 0)
+visible = false
+texture = ExtResource("1_8rpe2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D" unique_id=1333513918]
+transform = Transform3D(10, 0, 0, 0, -4.371139e-07, -10, 0, 10, -4.371139e-07, 0, 0, 0)
+mesh = SubResource("TorusMesh_w7c3h")
