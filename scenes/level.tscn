@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://gwp502yctqcn"]
 
 [ext_resource type="PackedScene" uid="uid://cxiposspd4aj2" path="res://scenes/player.tscn" id="1_2q6dc"]
+[ext_resource type="Script" uid="uid://bmvdknqfb57rw" path="res://scripts/controllers/level_controller.gd" id="1_ppgk2"]
 [ext_resource type="PackedScene" uid="uid://c7tsvqs0olqtj" path="res://scenes/bead.tscn" id="2_w7c3h"]
+[ext_resource type="PackedScene" uid="uid://jopu3aqx41re" path="res://scenes/maze.tscn" id="2_w8frs"]
+[ext_resource type="PackedScene" uid="uid://c3q315yat2061" path="res://scenes/matrix.tscn" id="3_mx8sn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w7c3h"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -22,36 +25,57 @@ _data = {
 }
 point_count = 14
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_hk511"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w7c3h"]
+albedo_color = Color(0.33660764, 0.3366076, 0.3366076, 1)
+
 [node name="Level" type="Node3D" unique_id=1466576287]
+script = ExtResource("1_ppgk2")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=67429660]
 environment = SubResource("Environment_mx8sn")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=273255]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-shadow_enabled = true
 
 [node name="Player" parent="." unique_id=113013378 instance=ExtResource("1_2q6dc")]
-camera_z_offset = 200.0
+
+[node name="Maze" parent="." unique_id=1869389183 instance=ExtResource("2_w8frs")]
+bead_num = 10
+bead_interval = 1.0
+
+[node name="Matrix" parent="." unique_id=1900700106 instance=ExtResource("3_mx8sn")]
+size = Vector3i(5, 5, 5)
+spacing = Vector3(25, 25, 25)
 
 [node name="Path3D" type="Path3D" parent="." unique_id=1626143005]
+visible = false
 curve = SubResource("Curve3D_w7c3h")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=1064892228]
 transform = Transform3D(-0.16750267, 0.8413961, 0.5138033, 2.9802223e-08, 0.5211666, -0.8534541, -0.9858682, -0.1429563, -0.08729712, 122.250084, -74.937515, 54.120193)
 
-[node name="Bead" parent="Path3D/PathFollow3D" unique_id=1733955880 node_paths=PackedStringArray("path_follow") instance=ExtResource("2_w7c3h")]
+[node name="Bead" parent="Path3D/PathFollow3D" unique_id=1989503064 node_paths=PackedStringArray("path_follow") instance=ExtResource("2_w7c3h")]
 path_follow = NodePath("..")
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D" unique_id=833329350]
-mode = 2
-path_node = NodePath("..")
-path_interval_type = 0
-path_interval = 1.0
-path_simplify_angle = 0.0
-path_rotation = 2
-path_rotation_accurate = false
-path_local = false
-path_continuous_u = true
-path_u_distance = 1.0
-path_joined = false
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=797472928]
+transform = Transform3D(2000, 0, 0, 0, 2000, 0, 0, 0, 2000, 0, 0, 0)
+mesh = SubResource("PlaneMesh_hk511")
+surface_material_override/0 = SubResource("StandardMaterial3D_w7c3h")
+
+[node name="GameInfo" type="VBoxContainer" parent="." unique_id=1463533238]
+offset_left = 29.0
+offset_top = 15.0
+offset_right = 198.0
+offset_bottom = 130.0
+
+[node name="Lives" type="Label" parent="GameInfo" unique_id=939622175]
+layout_mode = 2
+text = "Lives: "
+
+[node name="Money" type="Label" parent="GameInfo" unique_id=101750827]
+layout_mode = 2
+text = "Money: "
+
+[connection signal="bead_finished" from="Maze" to="." method="_on_maze_bead_finished"]

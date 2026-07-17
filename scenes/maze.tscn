@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://jopu3aqx41re"]
+
+[ext_resource type="Script" uid="uid://dufqvbgavrgcj" path="res://scripts/controllers/maze_controller.gd" id="1_fgl6e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w8frs"]
+albedo_color = Color(1, 0.4117647, 0.4509804, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_w8frs"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 51.80329, 5.004135, 35.856415, 0.7942505, -11.119354, 4.765457, -0.7942505, 11.119354, -4.765457, 51.25448, 69.46548, 34.090652, 0.7849388, 15.570274, 8.752136, -0.7849388, -15.570274, -8.752136, 44.943226, 70.879425, 9.811676, 1.9342957, 11.296196, 4.780011, -1.9342957, -11.296196, -4.780011, 43.571213, 46.680344, -1.0035086, 3.17688, 5.4364014, 15.090498, -3.17688, -5.4364014, -15.090498, 46.86405, 27.858822, -17.9988, 27.932865, -1.1385117, 14.637367, -27.932865, 1.1385117, -14.637367, 31.223118, 61.020546, -41.394928, 27.798332, -6.477173, -6.353874, -27.798332, 6.477173, 6.353874, -21.59201, 66.62152, -45.84893, 3.2184563, -5.5461426, -7.9264374, -3.2184563, 5.5461426, 7.9264374, -47.804775, 79.39391, -33.00763, -13.525295, 4.0132065, -3.4385986, 13.525295, -4.0132065, 3.4385986, -34.468445, 79.608055, -12.406174, 12.717045, 2.7608032, 31.792475, -12.717045, -2.7608032, -31.792475, -24.48058, 61.020546, -29.69686, 0.16373825, 3.1094856, -9.376251, -0.16373825, -3.1094856, 9.376251, -41.219112, 46.680344, -32.34548, -2.8364868, 9.135464, -5.7441816, 2.8364868, -9.135464, 5.7441816, -53.018433, 27.858822, -14.688029, 0, 0, 0, 0, 0, 0, -56.58566, 5.004135, -12.480844),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 13
+
+[sub_resource type="BoxMesh" id="BoxMesh_hk511"]
+
+[node name="Maze" type="Node3D" unique_id=1869389183]
+script = ExtResource("1_fgl6e")
+bead_num = null
+bead_interval = null
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="." unique_id=1866179068]
+polygon = PackedVector2Array(-1, -1, -1, 1, 1, 1, 1, -1)
+mode = 2
+path_node = NodePath("../Path")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = SubResource("StandardMaterial3D_w8frs")
+
+[node name="Path" type="Path3D" parent="." unique_id=2072503115]
+curve = SubResource("Curve3D_w8frs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=730763161]
+mesh = SubResource("BoxMesh_hk511")

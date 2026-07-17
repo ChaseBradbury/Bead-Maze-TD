@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://r1vwpx55habn"]
+
+[ext_resource type="Script" uid="uid://807aort2c3yj" path="res://scripts/controllers/placement_point_controller.gd" id="1_cv2v6"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_hk511"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hk511"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_hk511"]
+
+[node name="PlacementPoint" type="Node3D" unique_id=810067381]
+script = ExtResource("1_cv2v6")
+
+[node name="PointMesh" type="MeshInstance3D" parent="." unique_id=393588922]
+mesh = SubResource("SphereMesh_hk511")
+
+[node name="PointArea" type="Area3D" parent="." unique_id=621450467]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PointArea" unique_id=1121718759]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+shape = SubResource("SphereShape3D_hk511")
+
+[node name="AxisIndicators" type="Node3D" parent="." unique_id=695762292]
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AxisIndicators" unique_id=33288709]
+transform = Transform3D(0.15040404, 0, 0, 0, 22.81793, 0, 0, 0, 0.22972596, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_hk511")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="AxisIndicators" unique_id=628862356]
+transform = Transform3D(-6.574371e-09, -30.73455, 0, 0.15040407, -1.3434499e-06, 0, 0, 0, 0.22972596, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_hk511")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="AxisIndicators" unique_id=844355820]
+transform = Transform3D(0.15040404, 0, 0, 0, -1.5143997e-06, -0.2297259, 0, 34.645428, -1.0041638e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_hk511")
+
+[connection signal="input_event" from="PointArea" to="." method="_on_point_area_input_event"]
+[connection signal="mouse_entered" from="PointArea" to="." method="_on_point_area_mouse_entered"]
+[connection signal="mouse_exited" from="PointArea" to="." method="_on_point_area_mouse_exited"]

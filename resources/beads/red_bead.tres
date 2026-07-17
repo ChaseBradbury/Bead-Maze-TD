@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Bead" format=3 uid="uid://dck3326s0npa0"]
+
+[ext_resource type="Script" uid="uid://c41xh6hyg4h8i" path="res://scripts/resources/bead_resource.gd" id="1_c02fn"]
+
+[resource]
+script = ExtResource("1_c02fn")
+speed = 35.0
+color = Color(1, 0, 0, 1)
+health = 5
+metadata/_custom_type_script = "uid://c41xh6hyg4h8i"

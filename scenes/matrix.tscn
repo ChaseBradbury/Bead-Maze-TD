@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c3q315yat2061"]
+
+[ext_resource type="Script" uid="uid://ve41nlxuy5t7" path="res://scripts/controllers/matrix_controller.gd" id="1_pqmde"]
+
+[node name="Matrix" type="Node3D" unique_id=1900700106]
+script = ExtResource("1_pqmde")
+size = Vector3i(10, 10, 10)
+spacing = Vector3(10, 10, 10)
