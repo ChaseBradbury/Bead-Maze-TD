@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dynw7dphw2yqa"]
+
+[ext_resource type="Script" uid="uid://c4h8l2i78g1qi" path="res://scripts/controllers/healthbar_controller.gd" id="1_8wl12"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hk511"]
+bg_color = Color(0.31183133, 0, 0.037853006, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ntio1"]
+bg_color = Color(0.26268598, 0.5083731, 2.8878452e-07, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_qc6vu"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Healthbar" type="Node3D" unique_id=1969777471]
+script = ExtResource("1_8wl12")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=621293674]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(1024, 128)
+
+[node name="ProgressBar" type="ProgressBar" parent="SubViewport" unique_id=515133567]
+offset_right = 1024.0
+offset_bottom = 128.0
+theme_override_styles/background = SubResource("StyleBoxFlat_hk511")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ntio1")
+value = 50.0
+show_percentage = false
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=34259685]
+billboard = 1
+texture = SubResource("ViewportTexture_qc6vu")

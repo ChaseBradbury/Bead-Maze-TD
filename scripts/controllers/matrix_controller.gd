@@ -4,6 +4,7 @@ extends Node3D
 @export var tower_scene = load("res://scenes/tower.tscn")
 @export var size: Vector3i = Vector3i(5, 5, 5)
 @export var spacing: Vector3 = Vector3(25, 25, 25)
+@export var mazes: Array[MazeController]
 
 var point_matrix = []
 var tower_matrix = []
@@ -40,4 +41,5 @@ func _on_point_pressed(coords: Vector3i, world_pos: Vector3):
 	var tower_node = tower_scene.instantiate()
 	tower_node.position = world_pos
 	tower_matrix[coords.x][coords.y][coords.z] = tower_node
+	tower_node.mazes = mazes
 	add_child(tower_node)

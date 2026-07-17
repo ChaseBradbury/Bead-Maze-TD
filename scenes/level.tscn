@@ -42,12 +42,11 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 [node name="Player" parent="." unique_id=113013378 instance=ExtResource("1_2q6dc")]
 
 [node name="Maze" parent="." unique_id=1869389183 instance=ExtResource("2_w8frs")]
-bead_num = 10
-bead_interval = 1.0
 
-[node name="Matrix" parent="." unique_id=1900700106 instance=ExtResource("3_mx8sn")]
+[node name="Matrix" parent="." unique_id=1900700106 node_paths=PackedStringArray("mazes") instance=ExtResource("3_mx8sn")]
 size = Vector3i(5, 5, 5)
 spacing = Vector3(25, 25, 25)
+mazes = [NodePath("../Maze")]
 
 [node name="Path3D" type="Path3D" parent="." unique_id=1626143005]
 visible = false

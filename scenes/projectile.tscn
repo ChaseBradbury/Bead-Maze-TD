@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://nfn8s0cpe7q4"]
+
+[ext_resource type="Script" uid="uid://rb5maxybl18u" path="res://scripts/controllers/projectile_controller.gd" id="1_c8fcr"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hk511"]
+bottom_radius = 0.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hk511"]
+
+[node name="Projectile" type="Area3D" unique_id=473192788]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_c8fcr")
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=542779694]
+mesh = SubResource("CylinderMesh_hk511")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1571098039]
+shape = SubResource("CapsuleShape3D_hk511")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

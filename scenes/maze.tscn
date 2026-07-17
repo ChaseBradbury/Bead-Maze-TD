@@ -16,8 +16,6 @@ point_count = 13
 
 [node name="Maze" type="Node3D" unique_id=1869389183]
 script = ExtResource("1_fgl6e")
-bead_num = null
-bead_interval = null
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="." unique_id=1866179068]
 polygon = PackedVector2Array(-1, -1, -1, 1, 1, 1, 1, -1)

@@ -1,9 +1,15 @@
 [gd_scene format=3 uid="uid://dvhyceakw8ytw"]
 
+[ext_resource type="Script" uid="uid://bqi6fm8i6gcx1" path="res://scripts/controllers/tower_controller.gd" id="1_2x682"]
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_hk511"]
 
-[node name="Tower" type="Node3D" unique_id=1580694612]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8rpe2"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=26254163]
+[node name="Tower" type="Node3D" unique_id=1580694612]
+script = ExtResource("1_2x682")
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=26254163]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_hk511")
+surface_material_override/0 = SubResource("StandardMaterial3D_8rpe2")
