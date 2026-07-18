@@ -82,8 +82,7 @@ func _on_ground_area_input_event(camera: Node, event: InputEvent, event_position
 					GameManager.set_state(GameManager.State.DRAGGING)
 			if event.button_index == MOUSE_BUTTON_RIGHT:
 				blur_column()
-				if GameManager.is_state(GameManager.State.DRAGGING):
-					GameManager.set_state(GameManager.State.IDLE)
+				GameManager.set_state(GameManager.State.IDLE)
 
 func _on_point_pressed(coords: Vector3i, world_pos: Vector3):
 	point_pressed.emit(coords, world_pos)

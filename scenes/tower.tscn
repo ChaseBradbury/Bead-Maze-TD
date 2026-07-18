@@ -11,5 +11,6 @@ script = ExtResource("1_2x682")
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=26254163]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_hk511")
 surface_material_override/0 = SubResource("StandardMaterial3D_8rpe2")
