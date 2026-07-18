@@ -24,10 +24,13 @@ transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 0, 0)
 [node name="base" parent="Elements" unique_id=850324244 instance=ExtResource("2_ame88")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.7225571, 0)
 
-[node name="CannonContainer" type="Node3D" parent="Elements" unique_id=1645318052]
+[node name="Head" type="Node3D" parent="Elements" unique_id=848337755]
 
-[node name="cannon" parent="Elements/CannonContainer" unique_id=2078428212 instance=ExtResource("3_kt42t")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+[node name="CannonContainer" type="Node3D" parent="Elements/Head" unique_id=1645318052]
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1, -0.13447557, 0.07882718, 0)
 
-[node name="top" parent="Elements" unique_id=1015654877 instance=ExtResource("4_t0ppw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54184484, 0)
+[node name="cannon" parent="Elements/Head/CannonContainer" unique_id=2078428212 instance=ExtResource("3_kt42t")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.66, 0.175, 0)
+
+[node name="top" parent="Elements/Head" unique_id=1015654877 instance=ExtResource("4_t0ppw")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0.029053757, 0)
