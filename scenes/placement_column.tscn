@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://kh8xixdl2qv4"]
+
+[ext_resource type="Script" uid="uid://b0lnkwwcuwpuk" path="res://scripts/controllers/placement_column_controller.gd" id="1_qp0kj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hk511"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hk511"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ftcml"]
+resource_local_to_scene = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4xqv3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_qp0kj"]
+
+[node name="PlacementColumn" type="Node3D" unique_id=1830588441]
+script = ExtResource("1_qp0kj")
+
+[node name="GroundArea" type="Area3D" parent="." unique_id=826207005]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GroundArea" unique_id=1949707940]
+shape = SubResource("BoxShape3D_hk511")
+
+[node name="GroundMesh" type="MeshInstance3D" parent="." unique_id=1375784887]
+mesh = SubResource("BoxMesh_hk511")
+surface_material_override/0 = SubResource("StandardMaterial3D_ftcml")
+
+[node name="ColumnArea" type="Area3D" parent="." unique_id=1645860367]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ColumnArea" unique_id=1258173695]
+shape = SubResource("BoxShape3D_4xqv3")
+
+[node name="ColumnMesh" type="MeshInstance3D" parent="." unique_id=647574181]
+visible = false
+mesh = SubResource("BoxMesh_qp0kj")
+
+[node name="Points" type="Node3D" parent="." unique_id=391915678]
+visible = false
+
+[connection signal="mouse_entered" from="GroundArea" to="." method="_on_area_mouse_entered"]
+[connection signal="mouse_exited" from="GroundArea" to="." method="_on_area_mouse_exited"]

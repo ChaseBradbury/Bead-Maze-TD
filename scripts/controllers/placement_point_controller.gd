@@ -3,6 +3,7 @@ extends Node3D
 var matrix_coords: Vector3i
 
 signal point_pressed(coords: Vector3i, world_pos: Vector3)
+signal point_released(coords: Vector3i, world_pos: Vector3)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,6 +22,10 @@ func _on_point_area_input_event(camera: Node, event: InputEvent, event_position:
 		if event.pressed:
 			if event.button_index == MOUSE_BUTTON_LEFT:
 				point_pressed.emit(matrix_coords, position)
+		else:
+			if event.button_index == MOUSE_BUTTON_LEFT:
+				point_released.emit(matrix_coords, position)
+			
 
 
 func _on_point_area_mouse_entered() -> void:
