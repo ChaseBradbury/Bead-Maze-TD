@@ -16,6 +16,7 @@ func _ready() -> void:
 	current_health = bead.health
 	$Healthbar.set_max_health(current_health)
 	$Healthbar.set_health(current_health)
+	GameManager.state_changed.connect(_on_state_changed)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -28,3 +29,9 @@ func hit(projectile: Projectile):
 	$Healthbar.set_health(current_health)
 	if current_health <= 0:
 		killed.emit(self)
+
+func _on_state_changed(state: GameManager.State):
+	if state == GameManager.State.IDLE:
+		input_ray_pickable = true
+	else:
+		input_ray_pickable = false

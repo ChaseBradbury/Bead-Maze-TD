@@ -37,13 +37,33 @@ func set_spacing(new_spacing: Vector3, points: int):
 	$ColumnArea.scale.y = spacing.y * num_points
 	$ColumnArea.position.y = (spacing.y * num_points)/2
 
-func _on_area_mouse_entered() -> void:
+func focus_column():
 	$GroundMesh.get_active_material(0).albedo_color = hover_color
 	$ColumnMesh.visible = true
 	$Points.visible = true
 
-
-func _on_area_mouse_exited() -> void:
+func blur_column():
 	$GroundMesh.get_active_material(0).albedo_color = idle_color
 	$ColumnMesh.visible = false
 	$Points.visible = false
+
+func _on_area_mouse_entered() -> void:
+	if GameManager.is_state(GameManager.State.PLACING):
+		focus_column()
+
+
+func _on_area_mouse_exited() -> void:
+	if not GameManager.is_state(GameManager.State.DRAGGING):
+		blur_column()
+
+
+func _on_ground_area_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+	if event is InputEventMouseButton:
+		if event.pressed:
+			if event.button_index == MOUSE_BUTTON_LEFT:
+				if GameManager.is_state(GameManager.State.PLACING):
+					GameManager.set_state(GameManager.State.DRAGGING)
+			if event.button_index == MOUSE_BUTTON_RIGHT:
+				blur_column()
+				if GameManager.is_state(GameManager.State.DRAGGING):
+					GameManager.set_state(GameManager.State.IDLE)

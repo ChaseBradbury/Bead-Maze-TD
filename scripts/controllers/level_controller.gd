@@ -23,3 +23,7 @@ func update_money_ui():
 func _on_maze_bead_finished(bead_value: Bead) -> void:
 	lives -= 1
 	update_lives_ui()
+
+
+func _on_button_pressed() -> void:
+	GameManager.set_state(GameManager.State.PLACING)

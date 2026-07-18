@@ -67,4 +67,9 @@ text = "Lives: "
 layout_mode = 2
 text = "Money: "
 
+[node name="Button" type="Button" parent="GameInfo" unique_id=120409639]
+layout_mode = 2
+text = "Place Tower"
+
 [connection signal="bead_finished" from="Maze" to="." method="_on_maze_bead_finished"]
+[connection signal="pressed" from="GameInfo/Button" to="." method="_on_button_pressed"]
