@@ -12,8 +12,6 @@ _data = {
 }
 point_count = 13
 
-[sub_resource type="BoxMesh" id="BoxMesh_hk511"]
-
 [node name="Maze" type="Node3D" unique_id=1869389183]
 script = ExtResource("1_fgl6e")
 
@@ -34,6 +32,3 @@ material = SubResource("StandardMaterial3D_w8frs")
 
 [node name="Path" type="Path3D" parent="." unique_id=2072503115]
 curve = SubResource("Curve3D_w8frs")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=730763161]
-mesh = SubResource("BoxMesh_hk511")

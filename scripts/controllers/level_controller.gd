@@ -27,3 +27,10 @@ func _on_maze_bead_finished(bead_value: Bead) -> void:
 
 func _on_button_pressed() -> void:
 	GameManager.set_state(GameManager.State.PLACING)
+
+
+func _on_floor_area_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+	if event is InputEventMouseButton:
+		if event.pressed:
+			GameManager.set_state(GameManager.State.IDLE)
+			

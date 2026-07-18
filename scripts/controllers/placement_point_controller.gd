@@ -21,18 +21,18 @@ func _on_point_area_input_event(camera: Node, event: InputEvent, event_position:
 	if event is InputEventMouseButton:
 		if event.pressed:
 			if event.button_index == MOUSE_BUTTON_LEFT:
-				point_pressed.emit(matrix_coords, position)
+				point_pressed.emit(matrix_coords, global_position)
 		else:
 			if event.button_index == MOUSE_BUTTON_LEFT:
-				point_released.emit(matrix_coords, position)
+				point_released.emit(matrix_coords, global_position)
 			
 
 
 func _on_point_area_mouse_entered() -> void:
-	$PointMesh.scale = Vector3(2, 2, 2)
+	$PointMesh.scale = Vector3(10, 10, 10)
 	$AxisIndicators.visible = true
 
 
 func _on_point_area_mouse_exited() -> void:
-	$PointMesh.scale = Vector3(1, 1, 1)
+	$PointMesh.scale = Vector3(5, 5, 5)
 	$AxisIndicators.visible = false

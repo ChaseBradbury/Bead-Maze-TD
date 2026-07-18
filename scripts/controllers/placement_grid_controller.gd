@@ -21,7 +21,6 @@ func _ready() -> void:
 	world_offset.z = -(size.z * spacing.z)/2
 	for x in size.x:
 		columns.append([])
-		tower_matrix.append([])
 		for z in size.z:
 			var column_node = column_scene.instantiate()
 			column_node.position.x = (spacing.x * x) + world_offset.x
@@ -31,9 +30,24 @@ func _ready() -> void:
 			column_node.hover_color = hover_color
 			column_node.pressed_color = pressed_color
 			column_node.set_spacing(spacing, size.y)
+			column_node.column_coords = Vector3i(x, 0, z)
+			column_node.point_released.connect(_on_point_released)
 			add_child(column_node)
-
+	for x in size.x:
+		tower_matrix.append([])
+		for y in size.y:
+			tower_matrix[x].append([])
+			for z in size.z:
+				tower_matrix[x][y].append(null)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func _on_point_released(coords: Vector3i, world_pos: Vector3):
+	var tower_node = tower_scene.instantiate()
+	tower_node.position = world_pos
+	tower_matrix[coords.x][coords.y][coords.z] = tower_node
+	tower_node.mazes = mazes
+	add_child(tower_node)
+	GameManager.set_state(GameManager.State.IDLE)
