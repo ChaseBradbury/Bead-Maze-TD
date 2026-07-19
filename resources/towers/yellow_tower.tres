@@ -5,7 +5,8 @@
 
 [resource]
 script = ExtResource("1_qfdny")
-cost = 50
+name = "Tower 1"
+cost = 35
 color = Color(1, 1, 0, 1)
 projectile = ExtResource("1_nmveu")
 attack_speed = 1.0

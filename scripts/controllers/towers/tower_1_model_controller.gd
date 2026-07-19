@@ -3,7 +3,7 @@ extends Node3D
 var target = null
 
 var head_speed: float = TAU * 2
-var cannon_speed: float = TAU
+var cannon_speed: float = TAU/2
 var cannon_max_angle: float = 35
 var cannon_min_angle: float = -10
 

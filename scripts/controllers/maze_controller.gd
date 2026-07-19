@@ -9,6 +9,7 @@ var beads: Array[BeadController] = []
 var time_elapsed: float = 0.0
 
 signal bead_finished(bead_value: Bead)
+signal bead_killed(bead_value: Bead)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -35,6 +36,7 @@ func _on_bead_finished(bead_node: BeadController):
 	bead_node.path_follow.queue_free()
 
 func _on_bead_killed(bead_node: BeadController):
+	bead_killed.emit(bead_node.bead)
 	beads.erase(bead_node)
 	bead_node.path_follow.queue_free()
 

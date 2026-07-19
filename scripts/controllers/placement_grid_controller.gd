@@ -10,8 +10,11 @@ extends Node3D
 @export var hover_color: Color
 @export var pressed_color: Color
 
+var tower_to_place: Tower
 var columns = []
 var tower_matrix = []
+
+signal tower_placed(tower: Tower)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -44,10 +47,15 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+func set_tower_to_place(tower: Tower):
+	tower_to_place = tower
+
 func _on_point_released(coords: Vector3i, world_pos: Vector3):
 	var tower_node = tower_scene.instantiate()
 	tower_node.position = world_pos
 	tower_matrix[coords.x][coords.y][coords.z] = tower_node
 	tower_node.mazes = mazes
+	tower_node.tower = tower_to_place
 	add_child(tower_node)
+	tower_placed.emit(tower_to_place)
 	GameManager.set_state(GameManager.State.IDLE)

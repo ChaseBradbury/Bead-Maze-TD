@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://qgn5pp5t4cho"]
+
+[ext_resource type="Script" uid="uid://deog5v65uqudb" path="res://scripts/controllers/ui/tower_button_controller.gd" id="1_01dj8"]
+
+[node name="TowerButton" type="Control" unique_id=1644159256]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_01dj8")
+
+[node name="Button" type="Button" parent="." unique_id=503463825]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

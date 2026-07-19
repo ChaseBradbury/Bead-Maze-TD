@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://jopu3aqx41re" path="res://scenes/maze.tscn" id="2_w8frs"]
 [ext_resource type="PackedScene" uid="uid://c3q315yat2061" path="res://scenes/matrix.tscn" id="3_mx8sn"]
 [ext_resource type="PackedScene" uid="uid://bndpb46rahmn4" path="res://scenes/placement_grid.tscn" id="5_2r41h"]
+[ext_resource type="PackedScene" uid="uid://qgn5pp5t4cho" path="res://scenes/ui/tower_button.tscn" id="6_2r41h"]
+[ext_resource type="Resource" uid="uid://dx883w0ey1o2" path="res://resources/towers/yellow_tower.tres" id="7_b121j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w7c3h"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -56,6 +58,21 @@ visible = false
 mesh = SubResource("PlaneMesh_hk511")
 surface_material_override/0 = SubResource("StandardMaterial3D_w7c3h")
 
+[node name="Warning" type="Label" parent="." unique_id=1965683246]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 26.0
+offset_right = 20.0
+offset_bottom = 49.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.13725491, 0.003921569, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "Warning"
+
 [node name="GameInfo" type="VBoxContainer" parent="." unique_id=1463533238]
 offset_left = 29.0
 offset_top = 15.0
@@ -72,7 +89,11 @@ text = "Money: "
 
 [node name="Button" type="Button" parent="GameInfo" unique_id=120409639]
 layout_mode = 2
-text = "Place Tower"
+text = "Buy Tower 1"
+
+[node name="TowerButton" parent="GameInfo" unique_id=1644159256 instance=ExtResource("6_2r41h")]
+layout_mode = 2
+tower = ExtResource("7_b121j")
 
 [node name="FloorArea" type="Area3D" parent="." unique_id=1477787206]
 
@@ -81,5 +102,8 @@ transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, 0, 0, 0)
 shape = SubResource("WorldBoundaryShape3D_hk511")
 
 [connection signal="bead_finished" from="Maze" to="." method="_on_maze_bead_finished"]
+[connection signal="bead_killed" from="Maze" to="." method="_on_maze_bead_killed"]
+[connection signal="tower_placed" from="PlacementGrid" to="." method="_on_placement_grid_tower_placed"]
 [connection signal="pressed" from="GameInfo/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="GameInfo/TowerButton" to="." method="_on_tower_button_pressed"]
 [connection signal="input_event" from="FloorArea" to="." method="_on_floor_area_input_event"]
