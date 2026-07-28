@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="Bead Maze TD"
-run/main_scene="uid://gwp502yctqcn"
+run/main_scene="uid://bkfqyb334cwia"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameManager="*uid://ccpf22xdpskhe"
+SceneManager="*uid://cqyv5b7ep5wnv"
 
 [display]
 

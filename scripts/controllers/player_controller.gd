@@ -2,6 +2,8 @@ extends Node3D
 
 @export var tilt_speed: float = 3.0
 @export var rotation_speed: float = 5.0
+@export var tilt_sensitivity: float = 0.01
+@export var rotation_sensitivity: float = 0.02
 @export var zoom_increment: float = 5.0
 var camera_speed = 0.00005
 @export var camera_zoom: float = 150.0
@@ -33,15 +35,19 @@ func _process(delta: float) -> void:
 		rotate_y(-rotation_speed * delta)
 	if Input.is_action_pressed("camera_up"):
 		$CameraAnchor.rotate_x(-tilt_speed * delta)
-		if $CameraAnchor.rotation.x < camera_tilt_max:
-			$CameraAnchor.rotation.x = camera_tilt_max
 	if Input.is_action_pressed("camera_down"):
 		$CameraAnchor.rotate_x(tilt_speed * delta)
-		if $CameraAnchor.rotation.x > camera_tilt_min:
-			$CameraAnchor.rotation.x = camera_tilt_min
+	snap_tilt()
 
 func _unhandled_input(event: InputEvent):
-	if event is InputEventMouseMotion:
-		return
-		$Camera.rotation.x += event.relative.y
-		$Camera.rotation.y += event.relative.x
+	if event is InputEventMouse:
+		if event.button_mask == MouseButtonMask.MOUSE_BUTTON_MASK_RIGHT and event is InputEventMouseMotion:
+			rotate_y(-event.relative.x * rotation_sensitivity)
+			$CameraAnchor.rotate_x(-event.relative.y * tilt_sensitivity)
+			snap_tilt()
+
+func snap_tilt():
+	if $CameraAnchor.rotation.x > camera_tilt_min:
+		$CameraAnchor.rotation.x = camera_tilt_min
+	if $CameraAnchor.rotation.x < camera_tilt_max:
+		$CameraAnchor.rotation.x = camera_tilt_max

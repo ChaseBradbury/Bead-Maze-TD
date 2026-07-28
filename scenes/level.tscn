@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bndpb46rahmn4" path="res://scenes/placement_grid.tscn" id="5_2r41h"]
 [ext_resource type="PackedScene" uid="uid://qgn5pp5t4cho" path="res://scenes/ui/tower_button.tscn" id="6_2r41h"]
 [ext_resource type="Resource" uid="uid://dx883w0ey1o2" path="res://resources/towers/yellow_tower.tres" id="7_b121j"]
+[ext_resource type="PackedScene" uid="uid://0gpfgrhdd3k2" path="res://scenes/ui/game_menu.tscn" id="8_b121j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w7c3h"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -58,6 +59,15 @@ visible = false
 mesh = SubResource("PlaneMesh_hk511")
 surface_material_override/0 = SubResource("StandardMaterial3D_w7c3h")
 
+[node name="Notifications" type="VBoxContainer" parent="." unique_id=1043254201]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
 [node name="Warning" type="Label" parent="." unique_id=1965683246]
 visible = false
 anchors_preset = 5
@@ -87,10 +97,6 @@ text = "Lives: "
 layout_mode = 2
 text = "Money: "
 
-[node name="Button" type="Button" parent="GameInfo" unique_id=120409639]
-layout_mode = 2
-text = "Buy Tower 1"
-
 [node name="TowerButton" parent="GameInfo" unique_id=1644159256 instance=ExtResource("6_2r41h")]
 layout_mode = 2
 tower = ExtResource("7_b121j")
@@ -101,9 +107,11 @@ tower = ExtResource("7_b121j")
 transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, 0, 0, 0)
 shape = SubResource("WorldBoundaryShape3D_hk511")
 
+[node name="GameMenu" parent="." unique_id=1131347056 instance=ExtResource("8_b121j")]
+visible = false
+
 [connection signal="bead_finished" from="Maze" to="." method="_on_maze_bead_finished"]
 [connection signal="bead_killed" from="Maze" to="." method="_on_maze_bead_killed"]
 [connection signal="tower_placed" from="PlacementGrid" to="." method="_on_placement_grid_tower_placed"]
-[connection signal="pressed" from="GameInfo/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="GameInfo/TowerButton" to="." method="_on_tower_button_pressed"]
 [connection signal="input_event" from="FloorArea" to="." method="_on_floor_area_input_event"]

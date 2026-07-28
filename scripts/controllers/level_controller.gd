@@ -1,10 +1,9 @@
 extends Node3D
 
-@export var lives: int = 100
+@export var notification_scene = load("res://scenes/ui/notification.tscn")
+@export var lives: int = 10
 @export var money: int = 100
-@export var warning_time: float = 2
-
-var warning_time_elapsed: float = 0
+@export var max_notifications: int = 5
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,24 +13,34 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	warning_time_elapsed += delta
-	if warning_time_elapsed > warning_time:
-		$Warning.visible = false
+	pass
 	
 
 func update_lives_ui():
 	$GameInfo/Lives.text = "Lives: " + str(lives)
+	if lives <= 5:
+		notify(str(lives) + " lives left!", Notification.Type.WARNING)
 	
 func update_money_ui():
 	$GameInfo/Money.text = "Money: " + str(money)
 
-func warn(text: String):
-	$Warning.text = text
-	$Warning.visible = true
-	warning_time_elapsed = 0
+func notify(text: String, type: Notification.Type):
+	var notification_node = notification_scene.instantiate()
+	notification_node.text = text
+	notification_node.set_type(type)
+	$Notifications.add_child(notification_node)
+	while $Notifications.get_child_count() > max_notifications:
+		$Notifications.get_child(0).free()
+
+func display_menu():
+	set_process(false)
+	$GameMenu.visible = true
 
 func _on_maze_bead_finished(bead: Bead) -> void:
 	lives -= 1
+	if lives <= 0:
+		lives = 0
+		display_menu()
 	update_lives_ui()
 
 
@@ -56,7 +65,7 @@ func _on_tower_button_pressed(tower: Tower) -> void:
 		$PlacementGrid.set_tower_to_place(tower)
 		GameManager.set_state(GameManager.State.PLACING)
 	else:
-		warn("Not enough money!")
+		notify("Not enough money!", Notification.Type.CAUTION)
 		
 
 
