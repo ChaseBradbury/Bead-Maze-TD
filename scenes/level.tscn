@@ -101,6 +101,45 @@ text = "Money: "
 layout_mode = 2
 tower = ExtResource("7_b121j")
 
+[node name="SelectionView" type="VBoxContainer" parent="." unique_id=573771300]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -50.5
+offset_bottom = 50.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="SelectionName" type="Label" parent="SelectionView" unique_id=1345370741]
+layout_mode = 2
+text = "Tower"
+horizontal_alignment = 1
+
+[node name="TargetingOption" type="OptionButton" parent="SelectionView" unique_id=163272429]
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "Target Closest"
+popup/item_0/id = 0
+popup/item_1/text = "Target First"
+popup/item_1/id = 1
+popup/item_2/text = "Target Last"
+popup/item_2/id = 2
+
+[node name="UpgradeButton" type="Button" parent="SelectionView" unique_id=1940253577]
+layout_mode = 2
+text = "Upgrade"
+
+[node name="HSeparator" type="HSeparator" parent="SelectionView" unique_id=970707866]
+layout_mode = 2
+
+[node name="SellButton" type="Button" parent="SelectionView" unique_id=879506991]
+layout_mode = 2
+text = "Sell"
+
 [node name="FloorArea" type="Area3D" parent="." unique_id=1477787206]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FloorArea" unique_id=63808189]
@@ -113,5 +152,9 @@ visible = false
 [connection signal="bead_finished" from="Maze" to="." method="_on_maze_bead_finished"]
 [connection signal="bead_killed" from="Maze" to="." method="_on_maze_bead_killed"]
 [connection signal="tower_placed" from="PlacementGrid" to="." method="_on_placement_grid_tower_placed"]
+[connection signal="tower_selected" from="PlacementGrid" to="." method="_on_placement_grid_tower_selected"]
 [connection signal="pressed" from="GameInfo/TowerButton" to="." method="_on_tower_button_pressed"]
+[connection signal="item_selected" from="SelectionView/TargetingOption" to="." method="_on_targeting_option_item_selected"]
+[connection signal="pressed" from="SelectionView/UpgradeButton" to="." method="_on_upgrade_button_pressed"]
+[connection signal="pressed" from="SelectionView/SellButton" to="." method="_on_sell_button_pressed"]
 [connection signal="input_event" from="FloorArea" to="." method="_on_floor_area_input_event"]

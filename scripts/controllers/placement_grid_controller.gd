@@ -15,6 +15,7 @@ var columns = []
 var tower_matrix = []
 
 signal tower_placed(tower: Tower)
+signal tower_selected(tower_controller: TowerController)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -56,6 +57,11 @@ func _on_point_released(coords: Vector3i, world_pos: Vector3):
 	tower_matrix[coords.x][coords.y][coords.z] = tower_node
 	tower_node.mazes = mazes
 	tower_node.tower = tower_to_place
+	tower_node.tower_released.connect(_on_tower_released)
 	add_child(tower_node)
 	tower_placed.emit(tower_to_place)
 	GameManager.set_state(GameManager.State.IDLE)
+
+func _on_tower_released(tower_controller: TowerController):
+	tower_selected.emit(tower_controller)
+	GameManager.set_state(GameManager.State.SELECTED)
