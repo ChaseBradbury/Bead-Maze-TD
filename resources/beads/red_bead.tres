@@ -2,10 +2,17 @@
 
 [ext_resource type="Script" uid="uid://c41xh6hyg4h8i" path="res://scripts/resources/bead_resource.gd" id="1_c02fn"]
 
+[sub_resource type="Gradient" id="Gradient_fcylw"]
+offsets = PackedFloat32Array(0.18085106, 0.41489363, 0.71276593, 0.84042555)
+colors = PackedColorArray(0.99626666, 0, 0.0625249, 1, 0.49382114, 0.072553925, 0.048651204, 1, 0.21085414, 0.4066791, 0.62015283, 1, 0.1661813, 0.58431077, 0.8552383, 1)
+
 [resource]
 script = ExtResource("1_c02fn")
 speed = 35.0
 color = Color(1, 0, 0, 1)
+health_gradient = SubResource("Gradient_fcylw")
+scale_min = 0.5
+scale_max = 2.0
 health = 5
 bounty = 5
 metadata/_custom_type_script = "uid://c41xh6hyg4h8i"

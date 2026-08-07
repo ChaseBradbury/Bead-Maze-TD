@@ -74,6 +74,10 @@ func _on_placement_grid_tower_placed(tower: Tower) -> void:
 
 
 func _on_placement_grid_tower_selected(tower_controller: TowerController) -> void:
+	if tower_controller == null:
+		$SelectionView.visible = false
+	else:
+		$SelectionView.visible = true
 	if tower_controller != selected_tower:
 		if selected_tower != null:
 			selected_tower.deselect()
