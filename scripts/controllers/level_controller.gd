@@ -4,18 +4,33 @@ extends Node3D
 @export var lives: int = 100
 @export var money: int = 100
 @export var max_notifications: int = 5
+@export var stuck_time: int = 5
+@export var stuck_interval: float = 1.0
 
+var time_elapsed: float = 0.0
+var stuck_timer: int
 var selected_tower: TowerController
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	update_lives_ui()
 	update_money_ui()
+	stuck_timer = stuck_time
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if $Maze.queue_stuck:
+		time_elapsed += delta
+		if time_elapsed > stuck_interval:
+			time_elapsed = 0.0
+			notify("Beads stuck! " + str(int(stuck_timer)) + " seconds left!", Notification.Type.WARNING)
+			if stuck_timer <= 0:
+				display_menu()
+			stuck_timer -= 1
+	else:
+		time_elapsed = 0.0
+		stuck_timer = stuck_time
 	
 
 

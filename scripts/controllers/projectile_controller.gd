@@ -1,4 +1,5 @@
 extends Area3D
+class_name ProjectileController
 
 var target_node: Node3D
 var target_direction: Vector3
@@ -27,6 +28,6 @@ func _process(delta: float) -> void:
 func update_direction():
 	target_direction = global_position.direction_to(target_node.global_position)
 
-func _on_area_entered(bead: BeadController) -> void:
+func _on_area_entered(bead: BeadAreaController) -> void:
 	bead.hit(projectile)
 	queue_free()
