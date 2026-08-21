@@ -7,3 +7,4 @@ class_name Tower
 @export var projectile: Projectile
 @export var attack_speed: float
 @export var model_scene_index: int
+@export var targeting: bool

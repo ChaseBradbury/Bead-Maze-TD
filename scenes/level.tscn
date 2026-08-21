@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c3q315yat2061" path="res://scenes/matrix.tscn" id="3_mx8sn"]
 [ext_resource type="PackedScene" uid="uid://bndpb46rahmn4" path="res://scenes/placement_grid.tscn" id="5_2r41h"]
 [ext_resource type="PackedScene" uid="uid://qgn5pp5t4cho" path="res://scenes/ui/tower_button.tscn" id="6_2r41h"]
-[ext_resource type="Resource" uid="uid://dx883w0ey1o2" path="res://resources/towers/yellow_tower.tres" id="7_b121j"]
+[ext_resource type="Resource" uid="uid://dwadqujth3akt" path="res://resources/towers/tower_1.tres" id="7_b121j"]
 [ext_resource type="PackedScene" uid="uid://0gpfgrhdd3k2" path="res://scenes/ui/game_menu.tscn" id="8_b121j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w7c3h"]

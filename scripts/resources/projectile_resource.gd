@@ -6,3 +6,8 @@ class_name Projectile
 @export var homing: bool
 @export var lifespan: float
 @export var damage: int
+@export var impact_radius: float
+@export var bounces: int
+@export var lining: bool
+@export var model_scene_index: int
+@export var effects: Array[Effect]

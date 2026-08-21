@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Tower" format=3 uid="uid://dwadqujth3akt"]
+
+[ext_resource type="Script" uid="uid://y4aaax0k0cft" path="res://scripts/resources/tower_resource.gd" id="1_erwwf"]
+[ext_resource type="Resource" uid="uid://cqke5abjglxr1" path="res://resources/projectiles/projectile_1.tres" id="1_qt4xp"]
+
+[resource]
+script = ExtResource("1_erwwf")
+name = "Tower 1"
+cost = 35
+color = Color(1, 1, 1, 1)
+projectile = ExtResource("1_qt4xp")
+attack_speed = 1.0
+metadata/_custom_type_script = "uid://y4aaax0k0cft"

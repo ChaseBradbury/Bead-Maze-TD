@@ -13,6 +13,6 @@ color = Color(1, 0, 0, 1)
 health_gradient = SubResource("Gradient_fcylw")
 scale_min = 0.5
 scale_max = 2.0
-health = 5
+health = 25
 bounty = 5
 metadata/_custom_type_script = "uid://c41xh6hyg4h8i"

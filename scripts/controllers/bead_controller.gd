@@ -8,6 +8,10 @@ var current_health: int
 var frozen: bool = false
 var in_queue: bool = true
 
+var speed_modifier: float
+
+var effects: Array[Effect]
+
 signal finished(bead_node: BeadController)
 signal killed(bead_node: BeadController)
 
@@ -23,10 +27,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	speed_modifier = 1.0
+	for effect in effects:
+		effect.process_effect(self, delta)
 	if progress_ratio >= 1.0:
 		finished.emit(self)
 	if is_movable():
-		progress += bead.speed * delta
+		progress += bead.speed *speed_modifier * delta
 
 func update_health_color():
 	var mesh_mat = $BeadArea/Mesh.get_active_material(0)
@@ -63,7 +70,12 @@ func _on_front_area_exited(area: Area3D) -> void:
 
 
 func _on_bead_area_collided(projectile: Projectile) -> void:
-	current_health -= projectile.damage
+	for p_effect in projectile.effects:
+		p_effect.initialize_effect(self)
+		effects.append(p_effect.duplicate())
+
+func damage(amount: int):
+	current_health -= amount
 	$Healthbar.set_health(current_health)
 	update_health_color()
 	update_health_scale()

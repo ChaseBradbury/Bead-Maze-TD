@@ -26,7 +26,8 @@ func _process(delta: float) -> void:
 		queue_free()
 
 func update_direction():
-	target_direction = global_position.direction_to(target_node.global_position)
+	if is_instance_valid(target_node):
+		target_direction = global_position.direction_to(target_node.global_position)
 
 func _on_area_entered(bead: BeadAreaController) -> void:
 	bead.hit(projectile)
