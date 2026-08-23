@@ -19,6 +19,7 @@ func _ready() -> void:
 	#var mesh_mat = $SelectionMesh.get_active_material(0)
 	#mesh_mat.albedo_color = tower.color
 	var tower_model_scene = Constants.TOWER_MODEL_SCENES[tower.model_scene_index].instantiate()
+	tower_model_scene.set_tower(tower)
 	add_child(tower_model_scene)
 	tower_model_node = tower_model_scene
 	

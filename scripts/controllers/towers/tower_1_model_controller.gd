@@ -1,6 +1,5 @@
-extends Node3D
+extends TowerModelBase
 
-var target = null
 
 var head_speed: float = TAU * 2
 var cannon_speed: float = TAU/2
@@ -22,6 +21,3 @@ func _process(delta: float) -> void:
 		$Elements/Head.rotation.y = rotate_toward(head_rotation.y, Vector2(target_direction.x, -target_direction.z).angle(), head_speed*delta)
 		$Elements/Head/CannonContainer.rotation.z = rotate_toward(cannon_rotation.z, cannon_target_angle, cannon_speed*delta)
 		
-
-func set_target(new_target: BeadController):
-	target = new_target

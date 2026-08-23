@@ -10,4 +10,6 @@ cost = 35
 color = Color(1, 1, 1, 1)
 projectile = ExtResource("1_qt4xp")
 attack_speed = 1.0
+model_scene_index = 1
+targeting = true
 metadata/_custom_type_script = "uid://y4aaax0k0cft"
