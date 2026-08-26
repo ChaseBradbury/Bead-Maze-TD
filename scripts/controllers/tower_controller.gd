@@ -27,14 +27,17 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var target: BeadController
-	match(targeting_mode):
-		Constants.Targeting.CLOSEST:
-			target = mazes[0].get_closest_bead(global_position)
-		Constants.Targeting.FIRST:
-			target = mazes[0].get_first_bead()
-		Constants.Targeting.LAST:
-			target = mazes[0].get_last_bead()
+	var target: Node3D
+	if tower.targeting:
+		match(targeting_mode):
+			Constants.Targeting.CLOSEST:
+				target = mazes[0].get_closest_bead(global_position)
+			Constants.Targeting.FIRST:
+				target = mazes[0].get_first_bead()
+			Constants.Targeting.LAST:
+				target = mazes[0].get_last_bead()
+	else:
+		target = self
 	tower_model_node.set_target(target)
 	time_elapsed += delta
 	if time_elapsed > tower.attack_speed:

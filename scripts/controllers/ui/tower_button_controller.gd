@@ -1,4 +1,4 @@
-extends Control
+extends PanelContainer
 class_name TowerButton
 
 @export var tower: Tower

@@ -1,10 +1,10 @@
 extends Node3D
 class_name TowerModelBase
 
-var target: BeadController
+var target: Node3D
 var tower: Tower
 
-func set_target(new_target: BeadController):
+func set_target(new_target: Node3D):
 	target = new_target
 
 func set_tower(new_tower: Tower):

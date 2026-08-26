@@ -11,5 +11,7 @@ color = Color(1, 1, 0, 1)
 homing = true
 lifespan = 3.0
 damage = 1
+impact_radius = 1.0
+tolerance = 1.0
 effects = Array[ExtResource("1_iygtc")]([ExtResource("2_hxj7d")])
 metadata/_custom_type_script = "uid://dgce61anu0wbn"

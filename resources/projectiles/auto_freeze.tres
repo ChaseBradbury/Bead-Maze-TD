@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Projectile" format=3 uid="uid://dnda3t11gyhvh"]
+
+[ext_resource type="Script" uid="uid://b6n8gdsos6vex" path="res://scripts/resources/effect_resource.gd" id="1_l3dbb"]
+[ext_resource type="Resource" uid="uid://drqbw20omr6d5" path="res://resources/effects/freeze_effect.tres" id="2_2wukq"]
+[ext_resource type="Script" uid="uid://dgce61anu0wbn" path="res://scripts/resources/projectile_resource.gd" id="2_35cep"]
+
+[resource]
+script = ExtResource("2_35cep")
+lifespan = 100.0
+impact_radius = 25.0
+tolerance = 1.0
+effects = Array[ExtResource("1_l3dbb")]([ExtResource("2_2wukq")])
+metadata/_custom_type_script = "uid://dgce61anu0wbn"

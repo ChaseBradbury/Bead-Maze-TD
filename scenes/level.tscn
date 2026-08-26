@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://dwadqujth3akt" path="res://resources/towers/tower_1.tres" id="7_b121j"]
 [ext_resource type="Resource" uid="uid://dx883w0ey1o2" path="res://resources/towers/yellow_tower.tres" id="8_8c41q"]
 [ext_resource type="PackedScene" uid="uid://0gpfgrhdd3k2" path="res://scenes/ui/game_menu.tscn" id="8_b121j"]
+[ext_resource type="Resource" uid="uid://be8en7igrwlbw" path="res://resources/towers/freeze_tower.tres" id="9_olg7q"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w7c3h"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -106,6 +107,10 @@ tower = ExtResource("7_b121j")
 layout_mode = 2
 tower = ExtResource("8_8c41q")
 
+[node name="TowerButton3" parent="GameInfo" unique_id=1815421381 instance=ExtResource("6_2r41h")]
+layout_mode = 2
+tower = ExtResource("9_olg7q")
+
 [node name="SelectionView" type="VBoxContainer" parent="." unique_id=573771300]
 visible = false
 anchors_preset = 6
@@ -161,6 +166,7 @@ visible = false
 [connection signal="tower_selected" from="PlacementGrid" to="." method="_on_placement_grid_tower_selected"]
 [connection signal="pressed" from="GameInfo/TowerButton" to="." method="_on_tower_button_pressed"]
 [connection signal="pressed" from="GameInfo/TowerButton2" to="." method="_on_tower_button_pressed"]
+[connection signal="pressed" from="GameInfo/TowerButton3" to="." method="_on_tower_button_pressed"]
 [connection signal="item_selected" from="SelectionView/TargetingOption" to="." method="_on_targeting_option_item_selected"]
 [connection signal="pressed" from="SelectionView/UpgradeButton" to="." method="_on_upgrade_button_pressed"]
 [connection signal="pressed" from="SelectionView/SellButton" to="." method="_on_sell_button_pressed"]

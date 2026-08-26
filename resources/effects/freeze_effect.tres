@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="SpeedEffect" format=3 uid="uid://drqbw20omr6d5"]
+
+[ext_resource type="Script" uid="uid://mu4dkdycc7nl" path="res://scripts/resources/effects/speed_effect_resource.gd" id="1_kydpy"]
+
+[resource]
+script = ExtResource("1_kydpy")
+timer = 1.0
+metadata/_custom_type_script = "uid://mu4dkdycc7nl"
