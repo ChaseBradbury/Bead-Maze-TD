@@ -69,8 +69,8 @@ func _on_front_area_exited(area: Area3D) -> void:
 	frozen = false
 
 
-func _on_bead_area_collided(projectile: Projectile) -> void:
-	for p_effect in projectile.effects:
+func _on_bead_area_collided(new_effects: Array[Effect]) -> void:
+	for p_effect in new_effects:
 		p_effect.initialize_effect(self)
 		effects.append(p_effect.duplicate())
 

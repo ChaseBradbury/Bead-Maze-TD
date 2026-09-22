@@ -8,3 +8,4 @@ class_name Tower
 @export var attack_speed: float
 @export var model_scene_index: int
 @export var targeting: bool
+@export var effects: Array[Effect]

@@ -1,7 +1,9 @@
 [gd_resource type="Resource" script_class="Tower" format=3 uid="uid://dwadqujth3akt"]
 
 [ext_resource type="Script" uid="uid://y4aaax0k0cft" path="res://scripts/resources/tower_resource.gd" id="1_erwwf"]
+[ext_resource type="Script" uid="uid://b6n8gdsos6vex" path="res://scripts/resources/effect_resource.gd" id="1_jl2p8"]
 [ext_resource type="Resource" uid="uid://cqke5abjglxr1" path="res://resources/projectiles/projectile_1.tres" id="1_qt4xp"]
+[ext_resource type="Resource" uid="uid://er0be6wvj355" path="res://resources/effects/single_damage_big.tres" id="2_kcihc"]
 
 [resource]
 script = ExtResource("1_erwwf")
@@ -12,4 +14,5 @@ projectile = ExtResource("1_qt4xp")
 attack_speed = 1.0
 model_scene_index = 1
 targeting = true
+effects = Array[ExtResource("1_jl2p8")]([ExtResource("2_kcihc")])
 metadata/_custom_type_script = "uid://y4aaax0k0cft"

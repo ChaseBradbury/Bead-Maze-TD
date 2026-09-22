@@ -1,7 +1,9 @@
 [gd_resource type="Resource" script_class="Tower" format=3 uid="uid://dx883w0ey1o2"]
 
+[ext_resource type="Script" uid="uid://b6n8gdsos6vex" path="res://scripts/resources/effect_resource.gd" id="1_ewr4v"]
 [ext_resource type="Resource" uid="uid://4py3o5p65t43" path="res://resources/projectiles/yellow_projectile.tres" id="1_nmveu"]
 [ext_resource type="Script" uid="uid://y4aaax0k0cft" path="res://scripts/resources/tower_resource.gd" id="1_qfdny"]
+[ext_resource type="Resource" uid="uid://1f43pnkmk4k4" path="res://resources/effects/damage_effect_dot.tres" id="2_j5tt4"]
 
 [resource]
 script = ExtResource("1_qfdny")
@@ -11,4 +13,5 @@ color = Color(1, 1, 0, 1)
 projectile = ExtResource("1_nmveu")
 attack_speed = 1.0
 targeting = true
+effects = Array[ExtResource("1_ewr4v")]([ExtResource("2_j5tt4")])
 metadata/_custom_type_script = "uid://y4aaax0k0cft"

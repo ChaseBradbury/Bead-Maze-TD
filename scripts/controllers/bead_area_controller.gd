@@ -1,7 +1,7 @@
 extends Area3D
 class_name BeadAreaController
 
-signal collided(projectile: Projectile)
+signal collided(effects: Array[Effect])
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,5 +12,5 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func hit(projectile: Projectile):
-	collided.emit(projectile)
+func hit(effects: Array[Effect]):
+	collided.emit(effects)

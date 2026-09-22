@@ -12,4 +12,3 @@ class_name Projectile
 @export var bounces: int
 @export var lining: bool
 @export var model_scene_index: int
-@export var effects: Array[Effect]

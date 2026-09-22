@@ -6,6 +6,7 @@
 resource_local_to_scene = true
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_hk511"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_wu8i0")
 
 [node name="DefaultTowerModel" type="Node3D" unique_id=708456272]

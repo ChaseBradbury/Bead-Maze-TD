@@ -45,6 +45,7 @@ func _process(delta: float) -> void:
 		var projectile_node = projectile_scene.instantiate()
 		projectile_node.target_node = target
 		projectile_node.projectile = tower.projectile
+		projectile_node.effects = tower.effects
 		add_child(projectile_node)
 
 

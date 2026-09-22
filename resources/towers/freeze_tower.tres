@@ -1,7 +1,9 @@
 [gd_resource type="Resource" script_class="Tower" format=3 uid="uid://be8en7igrwlbw"]
 
 [ext_resource type="Script" uid="uid://y4aaax0k0cft" path="res://scripts/resources/tower_resource.gd" id="1_mhi8o"]
+[ext_resource type="Script" uid="uid://b6n8gdsos6vex" path="res://scripts/resources/effect_resource.gd" id="1_wyxg1"]
 [ext_resource type="Resource" uid="uid://dnda3t11gyhvh" path="res://resources/projectiles/auto_freeze.tres" id="1_x58r5"]
+[ext_resource type="Resource" uid="uid://drqbw20omr6d5" path="res://resources/effects/freeze_effect.tres" id="2_rms1u"]
 
 [resource]
 script = ExtResource("1_mhi8o")
@@ -10,4 +12,5 @@ cost = 10
 color = Color(0.19680884, 0.6753745, 0.89552176, 1)
 projectile = ExtResource("1_x58r5")
 attack_speed = 5.0
+effects = Array[ExtResource("1_wyxg1")]([ExtResource("2_rms1u")])
 metadata/_custom_type_script = "uid://y4aaax0k0cft"

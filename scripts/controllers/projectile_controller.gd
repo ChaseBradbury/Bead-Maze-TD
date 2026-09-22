@@ -5,6 +5,7 @@ var target_node: Node3D
 var target_direction: Vector3
 var target_position: Vector3
 var projectile: Projectile
+var effects: Array[Effect]
 
 var time_elapsed: float = 0.0
 var collided_beads: Array[BeadAreaController]
@@ -38,7 +39,7 @@ func update_direction():
 func impact():
 	$CollisionShape3D.scale = Vector3(projectile.impact_radius, projectile.impact_radius, projectile.impact_radius)
 	for bead in collided_beads:
-		bead.hit(projectile)
+		bead.hit(effects)
 	queue_free()
 
 func _on_area_entered(bead: BeadAreaController) -> void:
